@@ -10,7 +10,7 @@ namespace DomainLayer.Interfaces
     public interface IProductRepository
 
     {
-        public ProductEntity Create(string name , int dimensions);
+        public ProductEntity CreateProduct(string name , int dimensions);
         public List<ProductEntity> GetAllProduct();
         public ProductEntity UpdateProduct(int id , string name , int dimensions);
         public ProductEntity DeleteProduct(int id);

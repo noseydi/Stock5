@@ -9,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace InfrastructureLayer
 {
-    public class StockDbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class StockDbContext : DbContext
     {
-         public Microsoft.EntityFrameworkCore.DbSet<ProductEntity> products { get; set; }
+         public DbSet<ProductEntity> products { get; set; }
+         public DbSet<CityEntity> Cities { get; set; }
+         public DbSet<ProductSerialsEntity> productSerialsEntities { get; set; }
+         public DbSet<InventoryTransactionsEntity> inventoryTransactionsEntities { get; set; }
+         public DbSet<ShelvesEntity> shelvesEntities { get; set; }
+         public DbSet<WarehousesEntity> warehousesEntity { get; set; }
+         public DbSet<WarehouseTransferEntity> warehouseTransferEntity { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database = stockdb ; encrypt=false ;integrated security = true ;");

@@ -20,7 +20,7 @@ namespace ApplicationLayer.Services
 
         public ProductEntity Create(CreateProductDto item)
         {
-            return repo.Create(item.ProductName,item.Dimensions);
+            return repo.CreateProduct(item.ProductName,item.Dimensions);
         }
         public List<ProductEntity> GetAllProduct()
             { 

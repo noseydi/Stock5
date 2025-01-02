@@ -17,7 +17,7 @@ namespace InfrastructureLayer.Repositories
             _context = context; 
         }
 
-        public ProductEntity Create(string name, int dimensions)
+        public ProductEntity CreateProduct(string name, int dimensions)
         {
             ProductEntity product = new ProductEntity()
             { ProductName = name, Dimensions = dimensions };    

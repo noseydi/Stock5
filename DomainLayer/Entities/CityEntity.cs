@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class CitiesEntity
+    public class CityEntity
     {
         [Key] public int CityID { get; set; }
         public string CityName { get; set; }

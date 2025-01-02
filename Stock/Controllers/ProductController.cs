@@ -34,16 +34,17 @@ namespace Stock.Controllers
             return _productService.UpdateProduct(product);
         }
 
-        [HttpGet]
-        public ProductEntity GetProductById(int id)
-        {
-            return _productService.GetProduct(id);
-        }
         [HttpDelete]
         public ProductEntity DeleteProductById(int id)
         {
             return _productService.DeleteProduct(id);
         }
 
+        [HttpGet("{id}")]
+        public ProductEntity GetProductById(int id)
+    {
+        return _productService.GetProduct(id);
     }
+
+}
 }

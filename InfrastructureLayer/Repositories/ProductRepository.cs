@@ -50,7 +50,12 @@ namespace InfrastructureLayer.Repositories
 
         public ProductEntity UpdateProduct(int id, string name, int dimensions)
         {
-            throw new NotImplementedException();
+            ProductEntity product = new ProductEntity()
+            { 
+            ProductName = name, Dimensions = dimensions };
+            _context.Update(product);
+            _context.SaveChanges();
+            return product;
         }
     }
 }

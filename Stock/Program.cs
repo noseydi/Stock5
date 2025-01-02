@@ -1,7 +1,6 @@
 using DomainLayer.Interfaces;
 using InfrastructureLayer;
 using InfrastructureLayer.Repositories;
-using System.Data.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StockDbContext>(ServiceLifetime.Scoped); 

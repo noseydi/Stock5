@@ -26,6 +26,18 @@ namespace ApplicationLayer.Services
             { 
         return repo.GetAllProduct();
         }
-
+        public ProductEntity UpdateProduct(ProductEntity item)
+        {
+            return repo.UpdateProduct(item.ProductID , item.ProductName , item.Dimensions);
+        }
+        public ProductEntity DeleteProduct(int id)
+        {
+            return repo.DeleteProduct(id );
+        }
+        public ProductEntity GetProduct(int productID)
+        {
+            return repo.GetProduct(productID);
+        }
+             
     }
 }

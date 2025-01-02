@@ -28,9 +28,29 @@ namespace InfrastructureLayer.Repositories
 
         }
 
+        public ProductEntity DeleteProduct(int id)
+        {
+            ProductEntity entity = GetProduct(id);
+            _context.products.Remove(entity);
+            _context.SaveChanges();
+            return entity;
+
+        }
+
         public List<ProductEntity> GetAllProduct()
         {
             return _context.products.OrderBy(x => x.ProductID).ToList();
+        }
+
+        public ProductEntity GetProduct(int id)
+        {
+            ProductEntity entity = _context.products.Find(id);
+            return entity;
+        }
+
+        public ProductEntity UpdateProduct(int id, string name, int dimensions)
+        {
+            throw new NotImplementedException();
         }
     }
 }

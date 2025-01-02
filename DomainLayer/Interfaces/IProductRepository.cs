@@ -12,6 +12,8 @@ namespace DomainLayer.Interfaces
     {
         public ProductEntity Create(string name , int dimensions);
         public List<ProductEntity> GetAllProduct();
-
+        public ProductEntity UpdateProduct(int id , string name , int dimensions);
+        public ProductEntity DeleteProduct(int id);
+        public ProductEntity GetProduct(int id);
     }
 }

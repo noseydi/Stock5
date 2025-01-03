@@ -1,0 +1,14 @@
+{
+  "name": "stock2-front",
+  "version": "0.0.0",
+  "description": "Stock2Front",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {
+  }
+}

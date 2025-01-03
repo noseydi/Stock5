@@ -1,0 +1,18 @@
+<form[formGroup]="productForm"(ngSubmit) = "onSubmit()" >
+  <div>
+  <label for= "productID" > Product ID < /label>
+    < input id = "productID" formControlName = "productID" type = "number" />
+      </div>
+
+      < div >
+      <label for= "productName" > Product Name < /label>
+        < input id = "productName" formControlName = "productName" type = "text" />
+          </div>
+
+          < div >
+          <label for= "dimensions" > Dimensions < /label>
+            < input id = "dimensions" formControlName = "dimensions" type = "number" />
+              </div>
+
+              < button type = "submit"[disabled] = "!productForm.valid" > Submit < /button>
+                < /form>

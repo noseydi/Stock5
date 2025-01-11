@@ -28,7 +28,7 @@ namespace Stock.Controllers
         public async Task<ActionResult> Create(T entity)
         {
             await _service.AddAsync(entity);
-            return CreatedAtAction(nameof(GetById), entity);
+            return CreatedAtAction(nameof(GetById),new  { id = entity.Id }, entity) ;
         }
 
         [HttpPut("{id}")]

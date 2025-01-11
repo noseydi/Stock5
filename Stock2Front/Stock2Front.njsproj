@@ -28321,19 +28321,10 @@
     <TypeScriptCompile Include="clientApp\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="clientApp\src\app\app.component.ts" />
     <TypeScriptCompile Include="clientApp\src\app\app.module1.ts" />
-    <TypeScriptCompile Include="clientApp\src\app\product-form.component.html">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="clientApp\src\app\product-form.component.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="clientApp\src\app\app.module.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="clientApp\src\main.ts" />
-    <TypeScriptCompile Include="clientApp\src\app\product.model.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

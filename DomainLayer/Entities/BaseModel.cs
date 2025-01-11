@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class CityEntity : BaseModel
+    public class BaseModel
     {
-        //[Key] public int CityID { get; set; }
-        public string CityName { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

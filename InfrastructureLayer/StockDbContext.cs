@@ -20,7 +20,7 @@ namespace InfrastructureLayer
          public DbSet<WarehouseTransferEntity> warehouseTransferEntity { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database = stockdb ; encrypt=false ;integrated security = true ;");
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database = stockdb2 ; encrypt=false ;integrated security = true ;");
 
             base.OnConfiguring(optionsBuilder);
         }

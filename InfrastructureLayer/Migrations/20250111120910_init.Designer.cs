@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfrastructureLayer.Migrations
 {
     [DbContext(typeof(StockDbContext))]
-    [Migration("20250102194846_init")]
+    [Migration("20250111120910_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -27,28 +27,34 @@ namespace InfrastructureLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Entities.CityEntity", b =>
                 {
-                    b.Property<int>("CityID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CityID");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("DomainLayer.Entities.InventoryTransactionsEntity", b =>
                 {
-                    b.Property<int>("TransactionID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ProductID")
                         .HasColumnType("int");
@@ -70,35 +76,44 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int?>("WarehouseID")
                         .HasColumnType("int");
 
-                    b.HasKey("TransactionID");
+                    b.HasKey("Id");
 
                     b.ToTable("inventoryTransactionsEntities");
                 });
 
             modelBuilder.Entity("DomainLayer.Entities.ProductEntity", b =>
                 {
-                    b.Property<int>("ProductID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Dimensions")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductID");
+                    b.HasKey("Id");
 
                     b.ToTable("products");
                 });
 
             modelBuilder.Entity("DomainLayer.Entities.ProductSerialsEntity", b =>
                 {
-                    b.Property<string>("SerialNumber")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Position")
                         .IsRequired()
@@ -107,21 +122,28 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int?>("ProductID")
                         .HasColumnType("int");
 
+                    b.Property<string>("SerialNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ShelfID")
                         .HasColumnType("int");
 
-                    b.HasKey("SerialNumber");
+                    b.HasKey("Id");
 
                     b.ToTable("productSerialsEntities");
                 });
 
             modelBuilder.Entity("DomainLayer.Entities.ShelvesEntity", b =>
                 {
-                    b.Property<int>("ShelfID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShelfID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("Levels")
                         .HasColumnType("int");
@@ -133,21 +155,24 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int?>("WarehouseID")
                         .HasColumnType("int");
 
-                    b.HasKey("ShelfID");
+                    b.HasKey("Id");
 
                     b.ToTable("shelvesEntities");
                 });
 
             modelBuilder.Entity("DomainLayer.Entities.WarehouseTransferEntity", b =>
                 {
-                    b.Property<int>("TransferID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransferID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("FromWarehouseID")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired()
@@ -159,18 +184,18 @@ namespace InfrastructureLayer.Migrations
                     b.Property<DateTime>("TransferDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("TransferID");
+                    b.HasKey("Id");
 
                     b.ToTable("warehouseTransferEntity");
                 });
 
             modelBuilder.Entity("DomainLayer.Entities.WarehousesEntity", b =>
                 {
-                    b.Property<int>("WarehouseID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WarehouseID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AreaInSquareMeters")
                         .IsRequired()
@@ -179,11 +204,14 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int?>("CityID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Warehousename")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WarehouseID");
+                    b.HasKey("Id");
 
                     b.ToTable("warehousesEntity");
                 });

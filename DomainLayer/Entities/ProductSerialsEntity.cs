@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class ProductSerialsEntity
+    public class ProductSerialsEntity : BaseModel
     {
-        [Key] public string SerialNumber { get; set; }
+        public string SerialNumber { get; set; }
         public int? ProductID { get; set; }
         public int ShelfID { get; set; }
         public string Position { get; set; }

@@ -9,42 +9,13 @@ namespace Stock.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseController<ProductEntity>
     {
         private ProductService _productService;
-        public ProductController(IProductRepository repo)
+        public ProductController(IBaseService<ProductEntity> _service) : base (_service)
         {
-            _productService = new ProductService(repo);
         }
 
-        [HttpGet]
-        public List<ProductEntity> getAll()
-        {
-            return _productService.GetAllProduct();
-        }
-
-        [HttpPost]
-        public ProductEntity CreateProduct(CreateProductDto productdto)
-        {
-            return _productService.Create(productdto);
-        }
-        [HttpPatch]
-        public ProductEntity UpdateProduct(ProductEntity product)
-        {
-            return _productService.UpdateProduct(product);
-        }
-
-        [HttpDelete]
-        public ProductEntity DeleteProductById(int id)
-        {
-            return _productService.DeleteProduct(id);
-        }
-
-        [HttpGet("{id}")]
-        public ProductEntity GetProductById(int id)
-    {
-        return _productService.GetProduct(id);
-    }
 
 }
 }

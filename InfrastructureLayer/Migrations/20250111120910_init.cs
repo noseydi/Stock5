@@ -15,91 +15,114 @@ namespace InfrastructureLayer.Migrations
                 name: "Cities",
                 columns: table => new
                 {
-                    CityID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CityName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CityName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cities", x => x.CityID);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "inventoryTransactionsEntities",
                 columns: table => new
                 {
-                    TransactionID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TransactionType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     WarehouseID = table.Column<int>(type: "int", nullable: true),
                     ProductID = table.Column<int>(type: "int", nullable: true),
                     SerialNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: true),
-                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_inventoryTransactionsEntities", x => x.TransactionID);
+                    table.PrimaryKey("PK_inventoryTransactionsEntities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Dimensions = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "productSerialsEntities",
                 columns: table => new
                 {
-                    SerialNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SerialNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: true),
                     ShelfID = table.Column<int>(type: "int", nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_productSerialsEntities", x => x.SerialNumber);
+                    table.PrimaryKey("PK_productSerialsEntities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "shelvesEntities",
                 columns: table => new
                 {
-                    ShelfID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     WarehouseID = table.Column<int>(type: "int", nullable: true),
                     SpacePerShelfCM = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Levels = table.Column<int>(type: "int", nullable: true)
+                    Levels = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_shelvesEntities", x => x.ShelfID);
+                    table.PrimaryKey("PK_shelvesEntities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "warehousesEntity",
                 columns: table => new
                 {
-                    WarehouseID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Warehousename = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: true),
-                    AreaInSquareMeters = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AreaInSquareMeters = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_warehousesEntity", x => x.WarehouseID);
+                    table.PrimaryKey("PK_warehousesEntity", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "warehouseTransferEntity",
                 columns: table => new
                 {
-                    TransferID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FromWarehouseID = table.Column<int>(type: "int", nullable: true),
                     ToWarehouseID = table.Column<int>(type: "int", nullable: true),
                     SerialNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TransferDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    TransferDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_warehouseTransferEntity", x => x.TransferID);
+                    table.PrimaryKey("PK_warehouseTransferEntity", x => x.Id);
                 });
         }
 
@@ -111,6 +134,9 @@ namespace InfrastructureLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "inventoryTransactionsEntities");
+
+            migrationBuilder.DropTable(
+                name: "products");
 
             migrationBuilder.DropTable(
                 name: "productSerialsEntities");

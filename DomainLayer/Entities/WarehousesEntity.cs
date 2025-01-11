@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class WarehousesEntity
+    public class WarehousesEntity : BaseModel
     {
-        [Key] public int WarehouseID { get; set; }
+      //  [Key] public int WarehouseID { get; set; }
         public string Warehousename { get; set; }
         public int? CityID { get; set; }
         public string AreaInSquareMeters { get; set; }

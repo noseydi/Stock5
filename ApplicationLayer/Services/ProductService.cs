@@ -1,6 +1,7 @@
 ﻿using ApplicationLayer.Dtos;
 using DomainLayer.Entities;
 using DomainLayer.Interfaces;
+using InfrastructureLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,35 +10,13 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.Services
 {
-    public class ProductService
+    public class ProductService : BaseService<ProductEntity>
     {
-        IProductRepository repo;
 
-        public ProductService(IProductRepository _repo) 
+        public ProductService(BaseRepository<ProductEntity> repo , IBaseService<ProductSerialsEntity> productserial ): base (repo) 
         {
-            repo = _repo;
         }
 
-        public ProductEntity Create(CreateProductDto item)
-        {
-            return repo.CreateProduct(item.ProductName,item.Dimensions);
-        }
-        public List<ProductEntity> GetAllProduct()
-            { 
-        return repo.GetAllProduct();
-        }
-        public ProductEntity UpdateProduct(ProductEntity item)
-        {
-            return repo.UpdateProduct(item.ProductID , item.ProductName , item.Dimensions);
-        }
-        public ProductEntity DeleteProduct(int id)
-        {
-            return repo.DeleteProduct(id );
-        }
-        public ProductEntity GetProduct(int productID)
-        {
-            return repo.GetProduct(productID);
-        }
              
     }
 }

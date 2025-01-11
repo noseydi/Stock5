@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class WarehouseTransferEntity
+    public class WarehouseTransferEntity : BaseModel
     {
-        [Key] public int TransferID { get; set; }
+       // [Key] public int TransferID { get; set; }
         public int? FromWarehouseID { get; set; }
         public int? ToWarehouseID { get; set; }
         public string SerialNumber { get; set; }

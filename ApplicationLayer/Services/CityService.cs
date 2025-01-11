@@ -1,6 +1,7 @@
 ﻿using ApplicationLayer.Dtos;
 using DomainLayer.Entities;
 using DomainLayer.Interfaces;
+using InfrastructureLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,35 +10,15 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.Services
 {
-    public class CityService
-    {
-        ICityRepository repo;
+    
+        public class CityService : BaseService<CityEntity>
+        {
 
-        public CityService(ICityRepository _repo) 
-        {
-            repo = _repo;
-        }
+            public CityService(BaseRepository<CityEntity> repo, IBaseService<CityEntity> city) : base(repo)
+            {
+            }
 
-        public CityEntity CreateCity(CityEntity item)
-        {
-            return repo.CreateCity(item);
+
         }
-        public List<CityEntity> GetAllCities()
-            { 
-        return repo.GetAllCities();
-        }
-        public CityEntity UpdateCity(CityEntity item)
-        {
-            return repo.UpdateCity(item);
-        }
-        public CityEntity DeleteCity(int id)
-        {
-            return repo.DeleteCity(id );
-        }
-        public CityEntity GetCityById(int id)
-        {
-            return repo.GetCityById(id);
-        }
-             
-    }
+    
 }

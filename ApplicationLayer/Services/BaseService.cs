@@ -17,9 +17,9 @@ namespace ApplicationLayer.Services
         repo = _repo;   
         }
 
-        public Task AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-          return  repo.Add(entity);
+          await  repo.Add(entity);
         }
 
         public Task DeleteAsync(int id)

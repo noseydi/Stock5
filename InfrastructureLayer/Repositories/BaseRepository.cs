@@ -20,6 +20,7 @@ namespace InfrastructureLayer.Repositories
         public Task Add(T entity)
         {
             db.Add(entity);
+            db.SaveChanges();
             return Task.CompletedTask;
         }
 
